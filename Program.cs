@@ -1,7 +1,7 @@
-﻿/* Задача 66: Задайте значения M и N. Напишите программу, которая найдёт
-сумму натуральных элементов в промежутке от M до N.
-M = 1; N = 15 -> 120
-M = 4; N = 8. -> 30 */
+﻿/* Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии.
+Даны два неотрицательных числа m и n.
+m = 2, n = 3 -> A(m,n) = 9
+m = 3, n = 2 -> A(m,n) = 29 */
 
 int m, n;
 Console.Write($"Введите число: ");
@@ -9,15 +9,15 @@ int.TryParse(Console.ReadLine(), out m);
 Console.Write($"Введите число: ");
 int.TryParse(Console.ReadLine(), out n);
 
-Console.WriteLine(Fibb(n));
+Console.WriteLine(Akker(m, n));
 
-int Fibb(int item)
+int Akker(int m, int n)
 {
-    if (item < 0)
-        return -1;
-    if (item == m)
-        return m;
-    if (item == 1)
-        return 1;
-    return item + Fibb(item - 1);
+    if (m == 0)
+        return n + 1;
+    if (m > 0 && n == 0)
+        return Akker(m - 1, 1);
+    if (m > 0 && n > 0)
+        return Akker(m - 1, Akker(m, n - 1));
+    else return 1;
 }
